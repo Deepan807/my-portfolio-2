@@ -1,0 +1,87 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+body {
+  background-color: #0B0B0D;
+  color: #F3F1EC;
+}
+
+::selection {
+  background-color: #FF5A1F;
+  color: #0B0B0D;
+}
+
+.angled-panel {
+  clip-path: polygon(0 0, 100% 0, 100% 88%, 88% 100%, 0 100%);
+}
+
+.angled-panel-sm {
+  clip-path: polygon(6% 0, 100% 0, 100% 100%, 0 100%, 0 8%);
+}
+
+.noise {
+  position: relative;
+}
+
+.noise::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='120'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+}
+
+.focus-ring:focus-visible {
+  outline: 2px solid #FF7A1A;
+  outline-offset: 3px;
+}
+
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.spin-slow {
+  animation: spin-slow 14s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .spin-slow {
+    animation: none;
+  }
+}
+
+.gradient-banner {
+  background: radial-gradient(circle at 20% 20%, #FF9A2E 0%, transparent 45%),
+    radial-gradient(circle at 85% 15%, #E85A00 0%, transparent 40%),
+    radial-gradient(circle at 60% 85%, #FF7A1A 0%, transparent 50%),
+    linear-gradient(135deg, #17181C 0%, #0B0B0D 60%);
+}
+
+.gradient-footer {
+  background: linear-gradient(180deg, #0B0B0D 0%, #3A2410 60%, #E85A00 130%);
+}
